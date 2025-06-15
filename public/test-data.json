@@ -1,0 +1,109 @@
+{
+  "paymentMethods": [
+    {
+      "id": "crypto",
+      "name": "Cryptocurrency",
+      "description": "Bitcoin, Ethereum and other cryptocurrencies",
+      "icon": "₿",
+      "color": "from-orange-400 to-yellow-400"
+    },
+    {
+      "id": "bank",
+      "name": "Bank Transfer",
+      "description": "Secure bank wire transfer payment",
+      "icon": "🏦",
+      "color": "from-blue-400 to-cyan-400"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "tx_001",
+      "amount": 150.00,
+      "currency": "USD",
+      "method": "crypto",
+      "status": "completed",
+      "timestamp": "2024-01-15T10:30:00Z",
+      "description": "Test Bitcoin payment",
+      "expireMinutes": 1
+    },
+    {
+      "id": "tx_002",
+      "amount": 250.00,
+      "currency": "USD",
+      "method": "bank",
+      "status": "pending",
+      "timestamp": "2024-01-15T11:15:00Z",
+      "description": "Test bank transfer",
+      "expireMinutes": 1
+    }
+  ],
+  "defaultTransaction": {
+    "amount": 100,
+    "currency": "USD",
+    "status": "processing",
+    "expireMinutes": 1,
+         "descriptions": {
+       "crypto": "Test Bitcoin payment",
+       "bank": "Test bank transfer"
+     },
+     "accountTypes": {
+       "crypto": "Bitcoin Wallet",
+       "bank": "Bank Account"
+     },
+     "addresses": {
+       "crypto": "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
+       "bank": "TR123456789012345678901234"
+     }
+  },
+  "depositResponse": {
+    "isSuccess": true,
+    "message": null,
+    "fullName": "Test Account",
+    "accountType": "Test Account Type",
+    "address": "TR123456789012345678901234",
+    "url": "",
+    "redirectToUrl": false,
+    "amount": 100,
+    "currency": "USD",
+    "cryptoAmount": 100,
+    "cryptocurrency": "BTC",
+    "expireMinutes": 1
+  },
+  "cancelResponse": {
+    "message": "Transaction cancelled successfully"
+  },
+  "banks": [
+    { "id": 1, "name": "Akbank", "accountGroup": 1, "swiftCode": "AKBKTRIS", "code": "AKB" },
+    { "id": 2, "name": "Garanti BBVA", "accountGroup": 1, "swiftCode": "TGBATRIS", "code": "GAR" },
+    { "id": 3, "name": "Is Bank", "accountGroup": 1, "swiftCode": "ISBKTRIS", "code": "ISB" },
+    { "id": 4, "name": "Ziraat Bank", "accountGroup": 1, "swiftCode": "TCZBTR2A", "code": "ZIR" },
+    { "id": 5, "name": "Yapı Kredi", "accountGroup": 1, "swiftCode": "YAPITRIS", "code": "YKB" },
+    { "id": 6, "name": "VakıfBank", "accountGroup": 1, "swiftCode": "TVBATR2A", "code": "VAK" }
+  ],
+  "cryptocurrencies": [
+    { "id": 7, "accountGroup": 5, "swiftCode": "BTC", "name": "Bitcoin", "code": null },
+    { "id": 8, "accountGroup": 5, "swiftCode": "ETH", "name": "Ethereum", "code": null },
+    { "id": 9, "accountGroup": 5, "swiftCode": "LTC", "name": "Litecoin", "code": null },
+    { "id": 10, "accountGroup": 5, "swiftCode": "USDTTRC20", "name": "Tether (TRC20)", "code": null }
+  ],
+  "accountTypes": [
+    {
+      "id": "personal",
+      "name": "Personal Account",
+      "features": ["Basic payments", "Daily limit: $1,000", "24/7 support"],
+      "monthlyFee": 0
+    },
+    {
+      "id": "business",
+      "name": "Business Account",
+      "features": ["Bulk payments", "Daily limit: $10,000", "Priority support", "API access"],
+      "monthlyFee": 29.99
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise Account",
+      "features": ["Unlimited transactions", "Custom integration", "Dedicated account manager", "SLA guarantee"],
+      "monthlyFee": 199.99
+    }
+  ]
+} 

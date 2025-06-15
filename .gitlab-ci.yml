@@ -1,0 +1,29 @@
+stages:
+  - deploy
+
+deploy-to-ec2:
+  stage: deploy
+  image: node:20
+  only:
+    - main
+  before_script:
+    - apt-get update -y
+    - apt-get install -y openssh-client rsync
+  script:
+    # SSH yapılandırması
+    - mkdir -p ~/.ssh
+    - echo "$EC2_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-keyscan -H "$EC2_HOST" >> ~/.ssh/known_hosts
+
+    # Dosyaları EC2'ye aktar
+    - rsync -avz --delete --exclude='node_modules' ./ $EC2_USER@$EC2_HOST:$DEPLOY_PATH
+
+    # EC2 üzerinde işlemleri çalıştır
+    - ssh $EC2_USER@$EC2_HOST "
+        cd $DEPLOY_PATH &&
+        node -v && npm -v &&
+        npm install &&
+        npm run build &&
+        pm2 start npm --name next-payment-gateway -- start || pm2 restart next-payment-gateway
+      "
